@@ -1,0 +1,141 @@
+[gd_scene load_steps=24 format=3 uid="uid://c66byyepf3ch7"]
+
+[ext_resource type="Script" path="res://level_1.gd" id="1_iy1uo"]
+[ext_resource type="Script" path="res://PathSpawner.gd" id="1_o0s0h"]
+[ext_resource type="PackedScene" uid="uid://qq7qu1hcwlt0" path="res://Curry.tscn" id="2_dmkvb"]
+[ext_resource type="Texture2D" uid="uid://dxa61lg77u2k1" path="res://assets/Background1/MAP_1.png" id="2_utfkk"]
+[ext_resource type="PackedScene" uid="uid://pddodyab41tw" path="res://Home_Base.tscn" id="3_booaq"]
+[ext_resource type="Texture2D" uid="uid://b1dd1cvulj28f" path="res://assets/Background1/MAP_2.png" id="3_cyxpm"]
+[ext_resource type="Texture2D" uid="uid://dyjnnswmydcdc" path="res://assets/Background1/MAP_3.png" id="4_8nur2"]
+[ext_resource type="Texture2D" uid="uid://cf1xk7uoflst3" path="res://assets/Background1/MAP_4.png" id="5_b1m7s"]
+[ext_resource type="PackedScene" uid="uid://dymrf7ycynfkq" path="res://tower_place_ui.tscn" id="6_as1uv"]
+[ext_resource type="Texture2D" uid="uid://yg2m08qitjmq" path="res://assets/Background1/MAP_5.png" id="6_w63d2"]
+[ext_resource type="Script" path="res://Label.gd" id="7_ar3k6"]
+[ext_resource type="Texture2D" uid="uid://cxjquprydqfw8" path="res://assets/Background1/MAP_6.png" id="7_q26rh"]
+[ext_resource type="Texture2D" uid="uid://bddifylifpaai" path="res://assets/Background1/MAP_7.png" id="8_6fdvv"]
+[ext_resource type="Texture2D" uid="uid://b4xxef6w4jx1j" path="res://assets/Background1/MAP_8.png" id="9_nfeth"]
+[ext_resource type="Texture2D" uid="uid://c60685rtwucix" path="res://assets/Background1/MAP_9.png" id="10_oom7o"]
+[ext_resource type="Texture2D" uid="uid://b5nusyqmds0j6" path="res://assets/Background1/MAP_10.png" id="11_6ijlp"]
+[ext_resource type="Texture2D" uid="uid://b7iyxumen44fu" path="res://assets/Background1/MAP_11.png" id="12_pw1gb"]
+[ext_resource type="PackedScene" uid="uid://bht7qwq3uet11" path="res://Cookie.tscn" id="15_5iggo"]
+[ext_resource type="PackedScene" uid="uid://b7hqomxmsegdy" path="res://Baguette.tscn" id="16_83lxc"]
+[ext_resource type="Texture2D" uid="uid://r6ac80iv4dtk" path="res://assets/BIN.png" id="16_gxom8"]
+[ext_resource type="Texture2D" uid="uid://bajudar6slken" path="res://assets/Fame.png" id="21_cj7ps"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ela0k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_utfkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cyxpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8nur2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b1m7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w63d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q26rh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6fdvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nfeth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oom7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6ijlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pw1gb")
+}],
+"loop": true,
+"name": &"Conveyor",
+"speed": 6.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_03me5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 976, 24, 0, 0, 0, 0, 16, 24, 0, 0, 0, 0, 16, 456, 0, 0, 0, 0, 208, 456, 0, 0, 0, 0, 200, 208, 0, 0, 0, 0, 384, 208, 0, 0, 0, 0, 384, 456, 0, 0, 0, 0, 576, 456, 0, 0, 0, 0, 568, 208, 0, 0, 0, 0, 760, 208, 0, 0, 0, 0, 760, 448, 0, 0, 0, 0, 944, 456, 0, 0, 0, 0, 944, 200, 0, 0, 0, 0, 1008, 208)
+}
+point_count = 14
+
+[node name="level_1" type="Node2D"]
+script = ExtResource("1_iy1uo")
+
+[node name="Conveyor" type="AnimatedSprite2D" parent="."]
+position = Vector2(577.893, 321.5)
+scale = Vector2(0.767857, 0.767857)
+sprite_frames = SubResource("SpriteFrames_ela0k")
+animation = &"Conveyor"
+metadata/_edit_lock_ = true
+
+[node name="Path" type="Path2D" parent="."]
+position = Vector2(40, 16)
+curve = SubResource("Curve2D_03me5")
+script = ExtResource("1_o0s0h")
+
+[node name="Curry" parent="Path" instance=ExtResource("2_dmkvb")]
+position = Vector2(976, 24)
+rotates = false
+
+[node name="Cookie" parent="Path" instance=ExtResource("15_5iggo")]
+position = Vector2(976, 24)
+rotation = 6.28318
+rotates = false
+
+[node name="Baguette" parent="Path" instance=ExtResource("16_83lxc")]
+position = Vector2(976, 24)
+rotation = 6.28318
+rotates = false
+
+[node name="HomeBase" parent="." instance=ExtResource("3_booaq")]
+position = Vector2(1016, 224)
+rotation = -1.57079
+mass = 0.01
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+
+[node name="Bin" type="Sprite2D" parent="HomeBase"]
+position = Vector2(-1.49963, 68.9996)
+rotation = 1.57079
+scale = Vector2(0.766672, 0.766672)
+texture = ExtResource("16_gxom8")
+
+[node name="regin timer" type="Timer" parent="HomeBase"]
+wait_time = 0.5
+
+[node name="TowerPlaceUI" parent="." instance=ExtResource("6_as1uv")]
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="Control"]
+modulate = Color(1, 0.886275, 0.670588, 1)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 506.0
+offset_right = 1152.0
+offset_bottom = 549.0
+theme_override_font_sizes/font_size = 30
+script = ExtResource("7_ar3k6")
+
+[node name="FAME" type="Sprite2D" parent="Control"]
+position = Vector2(1003, 527)
+scale = Vector2(0.18125, 0.18125)
+texture = ExtResource("21_cj7ps")
